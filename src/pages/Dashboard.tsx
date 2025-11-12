@@ -19,14 +19,14 @@ const recentAppointments = [
 
 export default function Dashboard() {
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-foreground mb-2">Dashboard Overview</h1>
-          <p className="text-muted-foreground">Welcome back! Here's what's happening today.</p>
+          <h1 className="text-4xl font-bold text-foreground mb-2 tracking-tight">Dashboard Overview</h1>
+          <p className="text-base text-muted-foreground">Welcome back! Here's your comprehensive system overview.</p>
         </div>
-        <Button className="bg-gradient-primary text-white shadow-glow hover:opacity-90 transition-opacity rounded-xl">
-          <TrendingUp className="w-4 h-4 mr-2" />
+        <Button className="bg-gradient-primary text-white shadow-glow hover:shadow-elevated hover:scale-105 transition-all rounded-xl h-11 px-6 font-semibold">
+          <TrendingUp className="w-5 h-5 mr-2" />
           Generate Report
         </Button>
       </div>
@@ -37,7 +37,7 @@ export default function Dashboard() {
           title="Total Hospitals"
           value="156"
           icon={Building2}
-          trend="+12% from last month"
+          trend="+12%"
           trendUp={true}
           gradient="bg-gradient-primary"
         />
@@ -45,7 +45,7 @@ export default function Dashboard() {
           title="Active Patients"
           value="2,847"
           icon={Users}
-          trend="+8% from last month"
+          trend="+8%"
           trendUp={true}
           gradient="bg-gradient-accent"
         />
@@ -53,27 +53,30 @@ export default function Dashboard() {
           title="Appointments Today"
           value="89"
           icon={Calendar}
-          trend="-3% from yesterday"
+          trend="-3%"
           trendUp={false}
-          gradient="bg-gradient-to-br from-purple-500 to-pink-500"
+          gradient="bg-gradient-success"
         />
         <StatCard
           title="Emergency Calls"
           value="24"
           icon={Activity}
-          trend="+15% from yesterday"
+          trend="+15%"
           trendUp={true}
-          gradient="bg-gradient-to-br from-orange-500 to-red-500"
+          gradient="bg-gradient-warning"
         />
       </div>
 
       {/* Recent Activity */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div className="lg:col-span-2">
-          <div className="flex items-center justify-between mb-4">
-            <h2 className="text-xl font-semibold text-foreground">Recent Appointments</h2>
-            <Button variant="ghost" className="text-primary hover:bg-primary/10 rounded-lg">
-              View All
+          <div className="flex items-center justify-between mb-6">
+            <div>
+              <h2 className="text-2xl font-bold text-foreground mb-1">Recent Appointments</h2>
+              <p className="text-sm text-muted-foreground">Latest patient appointments and schedules</p>
+            </div>
+            <Button variant="ghost" className="text-primary hover:bg-primary/10 rounded-xl font-semibold">
+              View All →
             </Button>
           </div>
           <DataTable
@@ -108,46 +111,46 @@ export default function Dashboard() {
         </div>
 
         <div className="space-y-6">
-          <div className="glass-card p-6 hover-glass">
-            <h3 className="text-lg font-semibold text-foreground mb-4">Quick Actions</h3>
+          <div className="enterprise-card hover-glass">
+            <h3 className="text-xl font-bold text-foreground mb-5">Quick Actions</h3>
             <div className="space-y-3">
-              <Button className="w-full justify-start bg-gradient-primary text-white shadow-glow hover:opacity-90 rounded-xl">
-                <Building2 className="w-4 h-4 mr-2" />
+              <Button className="w-full justify-start bg-gradient-primary text-white shadow-glow hover:shadow-elevated hover:scale-[1.02] transition-all rounded-xl h-12 font-semibold">
+                <Building2 className="w-5 h-5 mr-3" />
                 Add Hospital
               </Button>
-              <Button className="w-full justify-start bg-gradient-accent text-white shadow-glow hover:opacity-90 rounded-xl">
-                <Users className="w-4 h-4 mr-2" />
+              <Button className="w-full justify-start bg-gradient-accent text-white shadow-glow hover:shadow-elevated hover:scale-[1.02] transition-all rounded-xl h-12 font-semibold">
+                <Users className="w-5 h-5 mr-3" />
                 Register Patient
               </Button>
-              <Button className="w-full justify-start bg-gradient-to-br from-purple-500 to-pink-500 text-white shadow-glow hover:opacity-90 rounded-xl">
-                <Calendar className="w-4 h-4 mr-2" />
+              <Button className="w-full justify-start bg-gradient-success text-white shadow-glow hover:shadow-elevated hover:scale-[1.02] transition-all rounded-xl h-12 font-semibold">
+                <Calendar className="w-5 h-5 mr-3" />
                 Book Appointment
               </Button>
             </div>
           </div>
 
-          <div className="glass-card p-6 hover-glass">
-            <h3 className="text-lg font-semibold text-foreground mb-4">System Status</h3>
-            <div className="space-y-4">
-              <div className="flex items-center justify-between">
-                <span className="text-sm text-muted-foreground">Server Status</span>
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 rounded-full bg-green-500"></div>
-                  <span className="text-sm font-medium">Online</span>
+          <div className="enterprise-card hover-glass">
+            <h3 className="text-xl font-bold text-foreground mb-5">System Status</h3>
+            <div className="space-y-5">
+              <div className="flex items-center justify-between p-3 rounded-xl bg-success/5 border border-success/20">
+                <span className="text-sm font-semibold text-foreground">Server Status</span>
+                <div className="flex items-center gap-2.5">
+                  <div className="w-2.5 h-2.5 rounded-full bg-success animate-pulse"></div>
+                  <span className="text-sm font-bold text-success">Online</span>
                 </div>
               </div>
-              <div className="flex items-center justify-between">
-                <span className="text-sm text-muted-foreground">Database</span>
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 rounded-full bg-green-500"></div>
-                  <span className="text-sm font-medium">Healthy</span>
+              <div className="flex items-center justify-between p-3 rounded-xl bg-success/5 border border-success/20">
+                <span className="text-sm font-semibold text-foreground">Database</span>
+                <div className="flex items-center gap-2.5">
+                  <div className="w-2.5 h-2.5 rounded-full bg-success animate-pulse"></div>
+                  <span className="text-sm font-bold text-success">Healthy</span>
                 </div>
               </div>
-              <div className="flex items-center justify-between">
-                <span className="text-sm text-muted-foreground">API Status</span>
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 rounded-full bg-green-500"></div>
-                  <span className="text-sm font-medium">Active</span>
+              <div className="flex items-center justify-between p-3 rounded-xl bg-success/5 border border-success/20">
+                <span className="text-sm font-semibold text-foreground">API Status</span>
+                <div className="flex items-center gap-2.5">
+                  <div className="w-2.5 h-2.5 rounded-full bg-success animate-pulse"></div>
+                  <span className="text-sm font-bold text-success">Active</span>
                 </div>
               </div>
             </div>

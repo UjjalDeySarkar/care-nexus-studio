@@ -1,9 +1,11 @@
 import { ReactNode } from "react";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AdminSidebar } from "./AdminSidebar";
-import { Bell, Search, User } from "lucide-react";
+import { Bell, Search, User, MessageSquare } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Badge } from "@/components/ui/badge";
+import { Breadcrumbs } from "./Breadcrumbs";
 
 interface AdminLayoutProps {
   children: ReactNode;
@@ -12,38 +14,60 @@ interface AdminLayoutProps {
 export function AdminLayout({ children }: AdminLayoutProps) {
   return (
     <SidebarProvider>
-      <div className="min-h-screen flex w-full">
+      <div className="min-h-screen flex w-full bg-background">
         <AdminSidebar />
         
         <div className="flex-1 flex flex-col">
           {/* Header */}
-          <header className="glass-card sticky top-0 z-10 border-b">
-            <div className="flex items-center justify-between px-6 py-4">
-              <div className="flex items-center gap-4">
-                <SidebarTrigger />
-                <div className="relative w-96 hidden md:block">
-                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+          <header className="glass-card sticky top-0 z-20 border-b border-border/50 shadow-soft">
+            <div className="flex items-center justify-between px-8 py-5">
+              <div className="flex items-center gap-6">
+                <SidebarTrigger className="hover:bg-sidebar-accent rounded-lg p-2 transition-colors" />
+                <div className="relative w-[480px] hidden lg:block">
+                  <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
                   <Input 
-                    placeholder="Search..." 
-                    className="pl-10 glass border-glass-border"
+                    placeholder="Search across all modules..." 
+                    className="pl-11 h-11 glass border-border/50 focus:border-primary/50 rounded-xl shadow-soft"
                   />
                 </div>
               </div>
               
-              <div className="flex items-center gap-3">
-                <Button variant="ghost" size="icon" className="rounded-full hover:bg-sidebar-accent">
-                  <Bell className="w-5 h-5" />
+              <div className="flex items-center gap-2">
+                <Button variant="ghost" size="icon" className="relative rounded-xl hover:bg-sidebar-accent h-10 w-10">
+                  <MessageSquare className="w-5 h-5" />
+                  <Badge className="absolute -top-1 -right-1 h-5 w-5 flex items-center justify-center p-0 bg-gradient-primary border-0 text-white text-[10px]">
+                    3
+                  </Badge>
                 </Button>
-                <div className="w-10 h-10 rounded-full bg-gradient-primary flex items-center justify-center shadow-glow cursor-pointer">
-                  <User className="w-5 h-5 text-white" />
+                <Button variant="ghost" size="icon" className="relative rounded-xl hover:bg-sidebar-accent h-10 w-10">
+                  <Bell className="w-5 h-5" />
+                  <Badge className="absolute -top-1 -right-1 h-5 w-5 flex items-center justify-center p-0 bg-destructive border-0 text-white text-[10px]">
+                    12
+                  </Badge>
+                </Button>
+                <div className="ml-3 flex items-center gap-3 pl-3 border-l border-border/50">
+                  <div className="text-right hidden md:block">
+                    <p className="text-sm font-semibold text-foreground">Admin User</p>
+                    <p className="text-xs text-muted-foreground">System Administrator</p>
+                  </div>
+                  <div className="w-10 h-10 rounded-xl bg-gradient-primary flex items-center justify-center shadow-glow cursor-pointer ring-2 ring-primary/20">
+                    <User className="w-5 h-5 text-white" />
+                  </div>
                 </div>
               </div>
+            </div>
+
+            {/* Breadcrumbs */}
+            <div className="px-8 pb-4 pt-2">
+              <Breadcrumbs />
             </div>
           </header>
 
           {/* Main Content */}
-          <main className="flex-1 p-6 overflow-auto">
-            {children}
+          <main className="flex-1 p-8 overflow-auto">
+            <div className="max-w-[1920px] mx-auto">
+              {children}
+            </div>
           </main>
         </div>
       </div>

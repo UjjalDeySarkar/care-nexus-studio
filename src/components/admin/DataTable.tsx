@@ -26,33 +26,36 @@ interface DataTableProps {
 
 export function DataTable({ columns, data, onEdit, onDelete, onView }: DataTableProps) {
   return (
-    <div className="glass-card overflow-hidden">
+    <div className="enterprise-card overflow-hidden">
       <Table>
         <TableHeader>
-          <TableRow className="border-glass-border">
+          <TableRow className="border-b border-border/50 bg-muted/30">
             {columns.map((column) => (
-              <TableHead key={column.key} className="font-semibold text-foreground">
+              <TableHead key={column.key} className="font-bold text-foreground text-xs uppercase tracking-wider h-12">
                 {column.label}
               </TableHead>
             ))}
-            <TableHead className="text-right font-semibold text-foreground">Actions</TableHead>
+            <TableHead className="text-right font-bold text-foreground text-xs uppercase tracking-wider">Actions</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
           {data.map((row, idx) => (
-            <TableRow key={idx} className="border-glass-border hover:bg-sidebar-accent/50 transition-colors">
+            <TableRow 
+              key={idx} 
+              className="border-b border-border/50 hover:bg-muted/20 transition-all duration-200 group"
+            >
               {columns.map((column) => (
-                <TableCell key={column.key}>
+                <TableCell key={column.key} className="py-4 font-medium text-sm">
                   {column.render ? column.render(row[column.key], row) : row[column.key]}
                 </TableCell>
               ))}
               <TableCell className="text-right">
-                <div className="flex items-center justify-end gap-2">
+                <div className="flex items-center justify-end gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity">
                   {onView && (
                     <Button 
                       variant="ghost" 
                       size="icon" 
-                      className="h-8 w-8 rounded-lg hover:bg-blue-500/10 hover:text-primary"
+                      className="h-9 w-9 rounded-xl hover:bg-primary/10 hover:text-primary transition-all"
                       onClick={() => onView(row)}
                     >
                       <Eye className="w-4 h-4" />
@@ -62,7 +65,7 @@ export function DataTable({ columns, data, onEdit, onDelete, onView }: DataTable
                     <Button 
                       variant="ghost" 
                       size="icon" 
-                      className="h-8 w-8 rounded-lg hover:bg-blue-500/10 hover:text-primary"
+                      className="h-9 w-9 rounded-xl hover:bg-primary/10 hover:text-primary transition-all"
                       onClick={() => onEdit(row)}
                     >
                       <Edit className="w-4 h-4" />
@@ -72,7 +75,7 @@ export function DataTable({ columns, data, onEdit, onDelete, onView }: DataTable
                     <Button 
                       variant="ghost" 
                       size="icon" 
-                      className="h-8 w-8 rounded-lg hover:bg-red-500/10 hover:text-destructive"
+                      className="h-9 w-9 rounded-xl hover:bg-destructive/10 hover:text-destructive transition-all"
                       onClick={() => onDelete(row)}
                     >
                       <Trash2 className="w-4 h-4" />
