@@ -1,10 +1,9 @@
 import { ReactNode } from "react";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AdminSidebar } from "./AdminSidebar";
-import { Bell, Search, User, MessageSquare } from "lucide-react";
+import { Search, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Badge } from "@/components/ui/badge";
 import { Breadcrumbs } from "./Breadcrumbs";
 
 interface AdminLayoutProps {
@@ -33,19 +32,7 @@ export function AdminLayout({ children }: AdminLayoutProps) {
               </div>
               
               <div className="flex items-center gap-2">
-                <Button variant="ghost" size="icon" className="relative rounded-xl hover:bg-sidebar-accent h-10 w-10">
-                  <MessageSquare className="w-5 h-5" />
-                  <Badge className="absolute -top-1 -right-1 h-5 w-5 flex items-center justify-center p-0 bg-gradient-primary border-0 text-white text-[10px]">
-                    3
-                  </Badge>
-                </Button>
-                <Button variant="ghost" size="icon" className="relative rounded-xl hover:bg-sidebar-accent h-10 w-10">
-                  <Bell className="w-5 h-5" />
-                  <Badge className="absolute -top-1 -right-1 h-5 w-5 flex items-center justify-center p-0 bg-destructive border-0 text-white text-[10px]">
-                    12
-                  </Badge>
-                </Button>
-                <div className="ml-3 flex items-center gap-3 pl-3 border-l border-border/50">
+                <div className="flex items-center gap-3 pl-3 border-l border-border/50">
                   <div className="text-right hidden md:block">
                     <p className="text-sm font-semibold text-foreground">Admin User</p>
                     <p className="text-xs text-muted-foreground">System Administrator</p>
