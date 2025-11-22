@@ -14,12 +14,12 @@ interface AdminLayoutProps {
 export function AdminLayout({ children }: AdminLayoutProps) {
   return (
     <SidebarProvider>
-      <div className="min-h-screen flex w-full bg-background">
+      <div className="min-h-screen flex w-full bg-background overflow-x-hidden">
         <AdminSidebar />
         
-        <div className="flex-1 flex flex-col">
+        <div className="flex-1 flex flex-col min-w-0">
           {/* Header */}
-          <header className="glass-card sticky top-0 z-20 border-b border-border/50 shadow-soft">
+          <header className="glass-card sticky top-0 z-10 border-b border-border/50 shadow-soft backdrop-blur-lg bg-background/95">
             <div className="flex items-center justify-between px-8 py-5">
               <div className="flex items-center gap-6">
                 <SidebarTrigger className="hover:bg-sidebar-accent rounded-lg p-2 transition-colors" />
@@ -64,7 +64,7 @@ export function AdminLayout({ children }: AdminLayoutProps) {
           </header>
 
           {/* Main Content */}
-          <main className="flex-1 p-8 overflow-auto">
+          <main className="flex-1 p-8 overflow-y-auto overflow-x-hidden">
             <div className="max-w-[1920px] mx-auto">
               {children}
             </div>
