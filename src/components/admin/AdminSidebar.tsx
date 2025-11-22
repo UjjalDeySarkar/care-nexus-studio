@@ -101,7 +101,7 @@ export function AdminSidebar() {
   );
 
   return (
-    <Sidebar className={`glass-card border-r transition-all overflow-hidden ${isCollapsed ? 'w-16' : 'w-72'}`} collapsible="icon">
+    <Sidebar className={`glass-card border-r transition-all overflow-hidden z-20 ${isCollapsed ? 'w-16' : 'w-72'}`} collapsible="icon">
       <SidebarContent className="px-2 overflow-y-auto overflow-x-hidden">
         <div className="px-4 py-6">
           <div className="flex items-center gap-3">
